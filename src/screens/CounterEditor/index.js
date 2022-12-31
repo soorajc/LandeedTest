@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import {
   SafeAreaView,
   TouchableOpacity,
@@ -25,15 +25,18 @@ const CounterEditor = ({navigation}) => {
   const [counterList, setCounterList] = useState([]);
   const [show, setShow] = useState(false);
 
-  const deleteCounter = id => {
-    const currentCounterList = counterList;
-    const filteredArray = currentCounterList.filter(item => item.id !== id);
-    setCounterList([...filteredArray]);
-  };
+  const deleteCounter = useCallback(
+    id => {
+      const currentCounterList = counterList;
+      const filteredArray = currentCounterList.filter(item => item.id !== id);
+      setCounterList([...filteredArray]);
+    },
+    [counterList],
+  );
 
-  const addCounter = () => {
+  const addCounter = useCallback(() => {
     setShow(true);
-  };
+  }, []);
 
   const renderItem = ({item}) => {
     return (
@@ -46,17 +49,17 @@ const CounterEditor = ({navigation}) => {
     );
   };
 
-  const onTimeSelection = (event, selectedDate) => {
+  const onTimeSelection = useCallback((event, selectedDate) => {
     setShow(false);
     if (event.type === 'set') {
       const durationInfo = findDurationInSeconds(selectedDate);
       setCounterList(prevValues => [durationInfo, ...prevValues]);
     }
-  };
+  }, []);
 
-  const openWorldClock = () => {
+  const openWorldClock = useCallback(() => {
     navigation.navigate('WorldClock');
-  };
+  }, [navigation]);
 
   return (
     <SafeAreaView>

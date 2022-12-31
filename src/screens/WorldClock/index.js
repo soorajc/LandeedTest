@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {
   View,
   SafeAreaView,
@@ -50,9 +50,9 @@ const WorldClock = ({navigation}) => {
     );
   };
 
-  const handleBackButton = () => {
+  const handleBackButton = useCallback(() => {
     navigation.goBack();
-  };
+  }, [navigation]);
 
   return (
     <SafeAreaView style={styles.container}>
