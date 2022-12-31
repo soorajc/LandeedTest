@@ -7,14 +7,14 @@
  */
 
 import React, {useEffect} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, Alert} from 'react-native';
 
 import styles from './styles';
 import {useClock} from 'react-native-timer-hooks';
 
 const Counter = props => {
   const startCount = props.count;
-  const [counter, start, pause, reset, isRunning] = useClock({
+  const [counter, start] = useClock({
     from: startCount,
     to: 0,
     stopOnFinish: true,
@@ -27,16 +27,17 @@ const Counter = props => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.textContainer}>
-        <Text style={styles.text}>
-          {counter === 0 ? 'Finished' : 'Count ' + counter}
+      <View style={styles.infoContainer}>
+        <Text style={styles.label}>Selected Time: {props.endTime}</Text>
+        <Text style={styles.countLabel}>
+          {counter === 0 ? 'Finished' : 'Timer: ' + counter + ' seconds'}
         </Text>
       </View>
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           style={styles.button}
           onPress={() => props.handleDelete(props.id)}>
-          <Text>Delete</Text>
+          <Text style={styles.buttonLabel}>Delete</Text>
         </TouchableOpacity>
       </View>
     </View>

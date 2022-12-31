@@ -15,11 +15,15 @@ import {
   View,
 } from 'react-native';
 
+import DateTimePicker from '@react-native-community/datetimepicker';
+
+import {findDurationInSeconds} from '../../helper';
 import Counter from '../../components/Counter';
 import styles from './styles';
 
 const CounterEditor = () => {
   const [counterList, setCounterList] = useState([]);
+  const [show, setShow] = useState(false);
 
   const deleteCounter = id => {
     const currentCounterList = counterList;
@@ -28,21 +32,44 @@ const CounterEditor = () => {
   };
 
   const addCounter = () => {
-    let item = {id: Math.random().toFixed(2), count: 20};
-    setCounterList(prevValues => [item, ...prevValues]);
+    setShow(true);
   };
 
   const renderItem = ({item}) => {
     return (
-      <Counter count={item.count} id={item.id} handleDelete={deleteCounter} />
+      <Counter
+        count={item.count}
+        id={item.id}
+        endTime={item.endTime}
+        handleDelete={deleteCounter}
+      />
     );
+  };
+
+  const onTimeSelection = (event, selectedDate) => {
+    setShow(false);
+    if (event.type === 'set') {
+      const durationInfo = findDurationInSeconds(selectedDate);
+      setCounterList(prevValues => [durationInfo, ...prevValues]);
+    }
   };
 
   return (
     <SafeAreaView>
-      <TouchableOpacity onPress={addCounter}>
-        <Text>Add Counter</Text>
-      </TouchableOpacity>
+      {show && (
+        <DateTimePicker
+          value={new Date()}
+          mode="time"
+          is24Hour={true}
+          display="spinner"
+          onChange={onTimeSelection}
+        />
+      )}
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.addCounterButton} onPress={addCounter}>
+          <Text style={styles.addCounterLabel}>Add a new counter</Text>
+        </TouchableOpacity>
+      </View>
       <View style={styles.listContainer}>
         <FlatList
           data={counterList}
