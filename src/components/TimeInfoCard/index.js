@@ -9,6 +9,8 @@
 import React from 'react';
 import {View, Text, ActivityIndicator} from 'react-native';
 
+import PropTypes from 'prop-types';
+
 import styles from './styles';
 
 const TimeInfoCard = props => {
@@ -34,3 +36,13 @@ const TimeInfoCard = props => {
 };
 
 export default TimeInfoCard;
+
+TimeInfoCard.propTypes = {
+  loading: PropTypes.bool.isRequired,
+  currentTimeZone: PropTypes.string,
+  timeZoneInfo: PropTypes.shape({
+    time: PropTypes.string.isRequired,
+    dayOfWeek: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+  }),
+};

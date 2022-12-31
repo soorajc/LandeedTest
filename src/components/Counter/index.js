@@ -7,10 +7,12 @@
  */
 
 import React, {useEffect} from 'react';
-import {View, Text, TouchableOpacity, Alert} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
+
+import {useClock} from 'react-native-timer-hooks';
+import PropTypes from 'prop-types';
 
 import styles from './styles';
-import {useClock} from 'react-native-timer-hooks';
 
 const Counter = props => {
   const startCount = props.count;
@@ -45,3 +47,9 @@ const Counter = props => {
 };
 
 export default Counter;
+
+Counter.propTypes = {
+  count: PropTypes.number.isRequired,
+  endTime: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+};
