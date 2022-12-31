@@ -8,11 +8,10 @@
 
 import React from 'react';
 
-import CounterEditor from './src/screens/CounterEditor';
-import WorldClock from './src/screens/WorldClock';
+import AppNavigationStack from './src/navigation';
 
 const App = () => {
-  return <WorldClock />;
+  return <AppNavigationStack />;
 };
 
 export default App;

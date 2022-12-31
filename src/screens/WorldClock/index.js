@@ -30,7 +30,7 @@ const defaultTimeInfo = {
   date: null,
 };
 
-const WorldClock = () => {
+const WorldClock = ({navigation}) => {
   const [currentTimeZone, setTimeZone] = useState(null);
   const [getTimeZoneInfo, loading, timeZoneInfo] = useTimeZoneApi();
 
@@ -48,6 +48,10 @@ const WorldClock = () => {
         <Text style={styles.buttonLabel}>{item.label}</Text>
       </TouchableOpacity>
     );
+  };
+
+  const handleBackButton = () => {
+    navigation.goBack();
   };
 
   return (
@@ -71,7 +75,7 @@ const WorldClock = () => {
         loading={loading}
         currentTimeZone={currentTimeZone || null}
       />
-      <TouchableOpacity style={styles.backButton}>
+      <TouchableOpacity style={styles.backButton} onPress={handleBackButton}>
         <Icon name="arrow-left" size={width * 0.08} color="#D50000" />
       </TouchableOpacity>
     </SafeAreaView>

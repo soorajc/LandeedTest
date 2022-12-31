@@ -4,7 +4,7 @@ const {height} = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    height: height * 0.1,
+    height: height * 0.12,
     backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
@@ -18,9 +18,20 @@ const styles = StyleSheet.create({
   addCounterLabel: {
     color: 'white',
     fontWeight: 'bold',
+    fontFamily: 'Montserrat-Bold',
+  },
+  openClockButton: {
+    marginTop: height * 0.02,
+    backgroundColor: '#424242',
+    padding: '2%',
+    borderRadius: 5,
+  },
+  openClockLabel: {
+    color: 'white',
+    fontFamily: 'Montserrat-Bold',
   },
   listContainer: {
-    height: height * 0.9,
+    height: height * 0.88,
   },
 });
 

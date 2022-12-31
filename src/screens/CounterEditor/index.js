@@ -21,7 +21,7 @@ import {findDurationInSeconds} from '../../helper';
 import Counter from '../../components/Counter';
 import styles from './styles';
 
-const CounterEditor = () => {
+const CounterEditor = ({navigation}) => {
   const [counterList, setCounterList] = useState([]);
   const [show, setShow] = useState(false);
 
@@ -54,6 +54,10 @@ const CounterEditor = () => {
     }
   };
 
+  const openWorldClock = () => {
+    navigation.navigate('WorldClock');
+  };
+
   return (
     <SafeAreaView>
       {show && (
@@ -68,6 +72,11 @@ const CounterEditor = () => {
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.addCounterButton} onPress={addCounter}>
           <Text style={styles.addCounterLabel}>Add a new counter</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.openClockButton}
+          onPress={openWorldClock}>
+          <Text style={styles.openClockLabel}>Open World Clock</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.listContainer}>
