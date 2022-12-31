@@ -24,15 +24,15 @@ const styles = StyleSheet.create({
   label: {
     color: 'black',
     fontSize: height * 0.02,
-    fontWeight: '700',
+    fontFamily: 'Montserrat-Regular',
   },
   countLabel: {
     color: 'white',
     fontSize: height * 0.018,
-    fontWeight: '900',
     backgroundColor: '#3F51B5',
     padding: '2%',
     borderRadius: 5,
+    fontFamily: 'Montserrat-SemiBold',
   },
   buttonContainer: {
     width: '35%',
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   },
   buttonLabel: {
     color: 'white',
-    fontWeight: '900',
+    fontFamily: 'Montserrat-SemiBold',
   },
 });
 

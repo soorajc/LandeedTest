@@ -1,6 +1,6 @@
 import {StyleSheet, Dimensions} from 'react-native';
 
-const {height} = Dimensions.get('window');
+const {height, width} = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   buttonContainer: {
@@ -14,10 +14,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#1DE9B6',
     padding: '2%',
     borderRadius: 5,
+    width: width * 0.45,
+    alignItems: 'center',
   },
   addCounterLabel: {
     color: 'white',
-    fontWeight: 'bold',
     fontFamily: 'Montserrat-Bold',
   },
   openClockButton: {
@@ -25,6 +26,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#424242',
     padding: '2%',
     borderRadius: 5,
+    width: width * 0.45,
+    alignItems: 'center',
   },
   openClockLabel: {
     color: 'white',
