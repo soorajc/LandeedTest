@@ -9,9 +9,10 @@
 import React from 'react';
 
 import CounterEditor from './src/screens/CounterEditor';
+import WorldClock from './src/screens/WorldClock';
 
 const App = () => {
-  return <CounterEditor />;
+  return <WorldClock />;
 };
 
 export default App;
