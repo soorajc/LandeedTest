@@ -25,3 +25,24 @@ export const findDurationInSeconds = selectedDate => {
 
   return {id: counterId, count: durationInSeconds, endTime};
 };
+
+export const findDurationInHours = selectedDate => {
+  const startTime = moment().format('HH:mm');
+  const endTime = moment(selectedDate).format('HH:mm');
+
+  const startTimeStamp = startTime.split(':');
+  const endTimeStamp = endTime.split(':');
+
+  const hours = parseInt(endTimeStamp[0]) - parseInt(startTimeStamp[0]);
+  const minutes = parseInt(endTimeStamp[1]) - parseInt(startTimeStamp[1]);
+
+  let durationInSeconds = hours * 60 * 60 + minutes * 45;
+
+  if (durationInSeconds < 0) {
+    durationInSeconds = durationInSeconds * -1;
+  }
+
+  const counterId = uuid.v4();
+
+  return {id: counterId, count: durationInSeconds, endTime};
+};

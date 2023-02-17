@@ -21,8 +21,8 @@ export const useTimeZoneApi = () => {
       .catch(error => {
         setLoading(false);
         Alert.alert(
-          'Message to test the testhouse and codepush',
-          'Unable to load the timezone details of ' + timeZone,
+          'Warning',
+          'Currnently not able to display time in ' + timeZone,
         );
         console.log('Error while loading time zone details', error);
       });
